@@ -127,12 +127,11 @@ void change_turn(Game* game) {
 
 
 int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][24]) {
-    // Check if this peg is a "win"
     if (player == PLAYER_RED && c == 23) {
-        return 1; // Red wins by reaching column 23
+        return 1;
     }
     if (player == PLAYER_BLACK && r == 23) {
-        return 1; // Black wins by reaching row 23
+        return 1;
     }
     // Mark this peg as visited
     visited[r][c] = 1;
@@ -151,7 +150,7 @@ int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][
 }
 
 void check_gamestate(Game* game) {
-    int visited[24][24]; // Array to prevent loops by marking pegs you have visited(obviously)
+    int visited[24][24]; // Array to prevent loops by marking pegs you have already visited (obviously)
     if (game->current_turn == PLAYER_RED) {
         for (int i = 1; i < 23; i++) {
             if (game->peg_board[i][0] == PLAYER_RED) {

@@ -24,7 +24,7 @@ enum GameState {
     enum GameState current_state;
 } Game;
 
- extern char print[47][93];//To print the board with links included
+extern char print[47][93];//To print the board with links included
 
 //8 possible knight's move row motion because twixt connections are essentially made in a knight's move pattern
 extern const int KNIGHT_MOVES_R[8];
