@@ -1,15 +1,12 @@
 #ifndef NEC_H
 #define NEC_H
 enum Player {
-    PLAYER_NONE, // Or empty
+    PLAYER_NONE, 
     PLAYER_RED,
     PLAYER_BLACK
 };
 
-
-
-
-// If game is over or not and who won
+//State of game(ie who won(if anybody has))
 enum GameState {
     STATE_PLAYING,
     STATE_RED_WINS,
@@ -24,7 +21,7 @@ enum GameState {
     enum GameState current_state;
 } Game;
 
-extern char print[47][93];//To print the board with links included
+extern char print[47][93];//To print the board with links included as forward and backward slashes
 
 //8 possible knight's move row motion because twixt connections are essentially made in a knight's move pattern
 extern const int KNIGHT_MOVES_R[8];
@@ -32,7 +29,7 @@ extern const int KNIGHT_MOVES_R[8];
 //8 possible knight's move column motion
 extern const int KNIGHT_MOVES_C[8];
 
-
+extern int visited[24][24]; // Array to prevent loops by marking pegs you have already visited (obviously)
 
 
 
@@ -41,9 +38,9 @@ void initialize_game(Game* game) ;
 void print_board(Game* game) ;
 void show_board(Game* game) ;
 void change_turn(Game* game) ;
-void print_player_prompt(enum Player player) ;
+void print_move_prompt(enum Player player) ;
 void print_winner(Game* game) ;
-int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][24]) ;
+int find_if_win(Game* game, enum Player player, int r, int c) ;
 void check_gamestate(Game* game) ;
 
 void place_peg(Game* game, int row, int col, enum Player player);

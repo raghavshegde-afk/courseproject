@@ -126,7 +126,7 @@ void change_turn(Game* game) {
 }
 
 
-int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][24]) {
+int find_if_win(Game* game, enum Player player, int r, int c) {
     if (player == PLAYER_RED && c == 23) {
         return 1;
     }
@@ -140,7 +140,7 @@ int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][
             int next_r = r + KNIGHT_MOVES_R[k];
             int next_c = c + KNIGHT_MOVES_C[k];
             if (!visited[next_r][next_c]) {
-                if (find_win_path(game, player, next_r, next_c, visited)) {
+                if (find_if_win(game, player, next_r, next_c)) {
                     return 1; 
                 }
             }
@@ -150,12 +150,11 @@ int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][
 }
 
 void check_gamestate(Game* game) {
-    int visited[24][24]; // Array to prevent loops by marking pegs you have already visited (obviously)
     if (game->current_turn == PLAYER_RED) {
         for (int i = 1; i < 23; i++) {
             if (game->peg_board[i][0] == PLAYER_RED) {
                 memset(visited, 0, sizeof(visited)); 
-                if (find_win_path(game, PLAYER_RED, i, 0, visited)) {
+                if (find_if_win(game, PLAYER_RED, i, 0)) {
                     game->current_state = STATE_RED_WINS;
                     return;
                 }
@@ -165,7 +164,7 @@ void check_gamestate(Game* game) {
         for (int j = 1; j < 23; j++) {
             if (game->peg_board[0][j] == PLAYER_BLACK) {
                 memset(visited, 0, sizeof(visited)); 
-                if (find_win_path(game, PLAYER_BLACK, 0, j, visited)) {
+                if (find_if_win(game, PLAYER_BLACK, 0, j)) {
                     game->current_state = STATE_BLACK_WINS;
                     return;
                 }
@@ -173,7 +172,7 @@ void check_gamestate(Game* game) {
         }
     }
 }
-void print_player_prompt(enum Player player) {
+void print_move_prompt(enum Player player) {
     if (player == PLAYER_RED) {
         printf("Red's turn. Enter your move:\n");
     } else if (player == PLAYER_BLACK) {

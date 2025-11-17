@@ -6,6 +6,7 @@
 char print[47][93];
 const int KNIGHT_MOVES_C[8] = { -1,  1, -2,  2, -2,  2, -1,  1 };
 const int KNIGHT_MOVES_R[8] = { -2, -2, -1, -1,  1,  1,  2,  2 };
+int visited[24][24];
 
 
 
@@ -18,8 +19,7 @@ int main() {
 
     while (my_game.current_state == STATE_PLAYING) {
         show_board(&my_game);
-        print_player_prompt(my_game.current_turn);
-        // Place peg
+        print_move_prompt(my_game.current_turn);
         printf("Input coords to place peg");
         int row, col;
         scanf("%d %d", &row, &col);
@@ -49,7 +49,7 @@ int main() {
         while(1) {
             
             char action;
-            printf("Enter action (R for Remove Peg, L for Place Link, D for Remove Link, E for end of turn): ");
+            printf("Enter action (R for Remove Peg, L for Place Link, S for Remove Link, E for end of turn): ");
             scanf(" %c", &action);
 
             
@@ -78,7 +78,7 @@ int main() {
                     continue;
                 }
                 place_link(&my_game, target_row, target_col, row2, col2);
-            } else if (action == 'D') {
+            } else if (action == 'S') {
                 int target_row, target_col;
         
                 printf("Enter coordinates (row col): ");
@@ -93,7 +93,6 @@ int main() {
                 remove_link(&my_game, target_row, target_col, row2, col2);
             } 
             else if(action == 'E'){
-                // End turn
                 break;
             }
             else {
