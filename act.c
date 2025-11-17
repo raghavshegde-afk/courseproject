@@ -133,7 +133,7 @@ int find_if_win(Game* game, enum Player player, int r, int c) {
     if (player == PLAYER_BLACK && r == 23) {
         return 1;
     }
-    // Mark this peg as visited
+    // Mark this peg as already visited
     visited[r][c] = 1;
     for (int k = 0; k < 8; k++) {
         if (game->Links[r][c][k] == player) {

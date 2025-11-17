@@ -3,9 +3,6 @@
 #include <string.h>
 #include "nec.h"
 
-
-
-
 void place_peg(Game* game, int row, int col, enum Player player) {
     if (row < 0 || row >= 24 || col < 0 || col >= 24) {
         printf("Invalid position\n");
@@ -41,7 +38,6 @@ void remove_peg(Game* game, int row, int col) {
 }
 
 void place_link(Game* game, int row1, int col1, int row2, int col2) {
-    // Validate positions and knight's move
     int dr = abs(row1 - row2);
     int r=row1-row2;
     int c=col1-col2;
@@ -50,7 +46,7 @@ void place_link(Game* game, int row1, int col1, int row2, int col2) {
         printf("Links can only be placed in a knight's move pattern\n");
         return;
     }
-    // Make sure link doesnt intersect another one
+    //Ensure that link doesn't intersect another one
     if(r==2&&c==1){
         if(game->Links[row1-1][col1-1][3]!=PLAYER_NONE||game->Links[row1-1][col1-1][5]!=PLAYER_NONE||game->Links[row1-2][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1-1][col1][6]!=PLAYER_NONE||game->Links[row1-1][col1][4]!=PLAYER_NONE||game->Links[row1-1][col1][2]!=PLAYER_NONE||game->Links[row1-2][col1][6]!=PLAYER_NONE||game->Links[row1][col1][4]!=PLAYER_NONE){
             printf("Link intersects another link\n");
@@ -79,7 +75,6 @@ void place_link(Game* game, int row1, int col1, int row2, int col2) {
         place_link(game, row2, col2, row1, col1);
         return;
     }
-    // Check if both pegs exist
     if (game->peg_board[row1][col1] == PLAYER_NONE || game->peg_board[row2][col2] == PLAYER_NONE) {
         printf("Both positions must have pegs to place link\n");
         return;
@@ -88,25 +83,22 @@ void place_link(Game* game, int row1, int col1, int row2, int col2) {
         printf("You can only link your own pegs\n");
         return;
     }
-    // Place link
     for (int i = 0; i < 8; i++) {
         if (KNIGHT_MOVES_R[i] == row2 - row1 && KNIGHT_MOVES_C[i] == col2 - col1) {
             game->Links[row1][col1][i] = game->current_turn;
-            game->Links[row2][col2][7-i] = game->current_turn; // Opposite direction
+            game->Links[row2][col2][7-i] = game->current_turn; 
             return;
         }
     }
 }
 
 void remove_link(Game* game, int row1, int col1, int row2, int col2) {
-    // Validate positions and knight's move
     int dr = abs(row1 - row2);
     int dc = abs(col1 - col2);
     if (!((dr == 2 && dc == 1) || (dr == 1 && dc == 2))) {
         printf("Links can only be removed in a knight's move pattern\n");
         return;
     }
-    // Check if link exists
     int link_exists = 0;
     for (int i = 0; i < 8; i++) {
         if (KNIGHT_MOVES_R[i] == row2 - row1 && KNIGHT_MOVES_C[i] == col2 - col1) {
@@ -124,11 +116,10 @@ void remove_link(Game* game, int row1, int col1, int row2, int col2) {
         printf("You can only remove links from your own pegs\n");
         return;
     }
-    // Remove link
     for (int i = 0; i < 8; i++) {
         if (KNIGHT_MOVES_R[i] == row2 - row1 && KNIGHT_MOVES_C[i] == col2 - col1) {
             game->Links[row1][col1][i] = PLAYER_NONE;
-            game->Links[row2][col2][7-i] = PLAYER_NONE; // opposite direction
+            game->Links[row2][col2][7-i] = PLAYER_NONE; 
             return;
         }
     }

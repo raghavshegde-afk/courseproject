@@ -1,5 +1,6 @@
 #ifndef NEC_H
 #define NEC_H
+
 enum Player {
     PLAYER_NONE, 
     PLAYER_RED,
@@ -14,7 +15,7 @@ enum GameState {
 };
 
 // Struct to hold all game data
- typedef struct Game {
+typedef struct Game {
     enum Player peg_board[24][24];
     enum Player Links[24][24][8]; //Link storage
     enum Player current_turn;
