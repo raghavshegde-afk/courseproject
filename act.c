@@ -189,7 +189,5 @@ void print_winner(Game* game) {
         printf("Red wins!\n");
     } else if (game->current_state == STATE_BLACK_WINS) {
         printf("Black wins!\n");
-    } else {
-        printf("Game is still ongoing.\n");
     } 
 }
