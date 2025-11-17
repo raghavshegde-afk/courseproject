@@ -60,6 +60,10 @@ int main() {
         
                 printf("Enter coordinates (row col): ");
                 scanf("%d %d", &target_row, &target_col);
+                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24) {
+                    printf("Invalid position\n");
+                    continue;
+                }
                 remove_peg(&my_game, target_row, target_col);
             } else if (action == 'L') {
                 int target_row, target_col;
@@ -69,6 +73,10 @@ int main() {
                 int row2, col2;
                 printf("Enter second coordinates for link placement (row col): ");
                 scanf("%d %d", &row2, &col2);
+                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
+                    printf("Invalid position\n");
+                    continue;
+                }
                 place_link(&my_game, target_row, target_col, row2, col2);
             } else if (action == 'D') {
                 int target_row, target_col;
@@ -78,6 +86,10 @@ int main() {
                 int row2, col2;
                 printf("Enter second coordinates for link removal (row col): ");
                 scanf("%d %d", &row2, &col2);
+                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
+                    printf("Invalid position\n");
+                    continue;
+                }
                 remove_link(&my_game, target_row, target_col, row2, col2);
             } 
             else if(action == 'E'){

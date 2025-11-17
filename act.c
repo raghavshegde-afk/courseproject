@@ -140,12 +140,9 @@ int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][
         if (game->Links[r][c][k] == player) {
             int next_r = r + KNIGHT_MOVES_R[k];
             int next_c = c + KNIGHT_MOVES_C[k];
-            // Bounds check (ensures we are still on the board) not really necessary but my code caused segmentation faults due to infinite recursion in another function when I first wrote it (I was not using the visited array) so I put this condition in because I didn't know that infinite recursion causes segmentation faults so I thought maybe I was going out of bounds
-            if (next_r >= 0 && next_r < 24 && next_c >= 0 && next_c < 24) {
-                if (visited[next_r][next_c] == 0) {
-                    if (find_win_path(game, player, next_r, next_c, visited)) {
-                        return 1; 
-                    }
+            if (visited[next_r][next_c] == 0) {
+                if (find_win_path(game, player, next_r, next_c, visited)) {
+                    return 1; 
                 }
             }
         }
