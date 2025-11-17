@@ -140,7 +140,7 @@ int find_win_path(Game* game, enum Player player, int r, int c, int visited[24][
         if (game->Links[r][c][k] == player) {
             int next_r = r + KNIGHT_MOVES_R[k];
             int next_c = c + KNIGHT_MOVES_C[k];
-            if (visited[next_r][next_c] == 0) {
+            if (!visited[next_r][next_c]) {
                 if (find_win_path(game, player, next_r, next_c, visited)) {
                     return 1; 
                 }
