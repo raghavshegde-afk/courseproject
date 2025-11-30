@@ -10,107 +10,221 @@ void initialize_game(Game* game) {
 }
 
 
+// void print_board(Game* game) {
+//     memset(print, ' ', sizeof(print));
+
+//     for(int i=0;i<24;i++){
+//         for(int j=0;j<24;j++){
+//             for(int k=0;k<8;k++){
+//                 if(game->peg_board[i][j]==PLAYER_RED){
+//                     print[i*2][j*4]= 'R';
+//                     if(game->Links[i][j][k]==PLAYER_RED){
+                        
+                    
+//                         if(k==0){
+//                             print[i*2-1][j*4-1] = '\\';
+//                             print[i*2-2][j*4-2] = '\\';
+//                             print[i*2-3][j*4-3] = '\\';
+//                         }
+//                         else if(k==1){
+//                             print[i*2-1][j*4+1] = '/';
+//                             print[i*2-2][j*4+2] = '/';
+//                             print[i*2-3][j*4+3] = '/';
+
+//                         }
+//                         else if(k==2){
+//                             print[i*2-1][4*(j-1)] = '\\';
+                            
+//                         }
+//                         else if(k==3){
+//                             print[i*2-1][(j+1)*4] = '/';
+//                         }
+//                         else if(k==4){
+//                             print[i*2+1][(j-1)*4] = '/';
+//                         }
+//                         else if(k==5){
+//                             print[i*2+1][(j+1)*4] = '\\';
+//                         }
+//                         else if(k==6){
+//                             print[i*2+1][j*4-1] = '/';
+//                             print[i*2+2][j*4-2] = '/';
+//                             print[i*2+3][j*4-3] = '/';
+                            
+//                         }
+//                         else if(k==7){
+//                             print[i*2+1][j*4+1] = '\\';
+//                             print[i*2+2][j*4+2] = '\\';
+//                             print[i*2+3][j*4+3] = '\\';
+//                         }
+//                     }
+//                 } else if(game->peg_board[i][j]==PLAYER_BLACK){
+//                     print[i*2][j*4]= 'B';
+//                     if(game->Links[i][j][k]==PLAYER_BLACK){
+
+//                         if(k==0){
+//                             print[i*2-1][j*(4-1)] = '\\';
+//                         }
+//                         else if(k==1){
+//                             print[i*2+1][j*(4-1)] = '/';
+//                         }
+//                         else if(k==2){
+//                             print[i*2-1][j*4-1] = '\\';
+//                             print[i*2-2][j*4-2] = '\\';
+//                             print[i*2-3][j*4-3] = '\\';
+//                         }
+//                         else if(k==3){
+//                             print[i*2-3][j*4+1] = '/';
+//                             print[i*2-2][j*4+2] = '/';
+//                             print[i*2-3][j*4+3] = '/';
+//                         }
+//                         else if(k==4){
+//                             print[i*2+1][j*4+1] = '\\';
+//                             print[i*2+2][j*4+2] = '\\';
+//                             print[i*2+3][j*4+3] = '\\';
+//                         }
+//                         else if(k==5){
+//                             print[i*2+1][j*4-1] = '/';
+//                             print[i*2+2][j*4-2] = '/';
+//                             print[i*2+3][j*4-3] = '/';
+//                         }
+//                         else if(k==6){
+//                             print[i*2+1][j*(4+1)] = '\\';
+//                         }
+//                         else if(k==7){
+//                             print[i*2-1][j*(4-1)] = '/';
+//                         }
+                        
+                    
+                    
+//                     }
+                    
+//                 }
+//                 else{
+//                     print[i*2][j*4]= '.';
+//                 }
+//             }
+//         }
+//     }
+// }
 void print_board(Game* game) {
     memset(print, ' ', sizeof(print));
-
+    for(int i=0;i<48;i++){
+        if(i>0){
+            print[i][4]='|';
+            print[i][92]='|';
+        
+        }
+        if((i-1)%2==0){
+            print[i][0]=(char)((i-1)/20+'0');
+            print[i][1]=(char)(((i-1)/2)%10+'0');
+        }
+    }
+    for(int j=0;j<96;j++){
+        if(j>1){
+            print[46][j]='_';
+            print[2][j]='_';
+        }
+        if(j>1 && (j-2)%4==0){
+            print[0][j]=(char)((j-2)/40+'0');
+            print[0][j+1]=(char)(((j-2)/4)%10+'0');
+        }
+    }
     for(int i=0;i<24;i++){
         for(int j=0;j<24;j++){
             for(int k=0;k<8;k++){
                 if(game->peg_board[i][j]==PLAYER_RED){
-                    print[i*2][j*4]= 'R';
+                    print[i*2+1][j*4+2+1]= 'R';
                     if(game->Links[i][j][k]==PLAYER_RED){
                         
                     
                         if(k==0){
-                            print[i*2-1][j*4-1] = '\\';
-                            print[i*2-2][j*4-2] = '\\';
-                            print[i*2-3][j*4-3] = '\\';
+                            print[i*2][j*4-1+1+2] = '\\';
+                            print[i*2-1][j*4-2+2+1] = '\\';
+                            print[i*2-2][j*4-3+2+1] = '\\';
                         }
                         else if(k==1){
-                            print[i*2-1][j*4+1] = '/';
-                            print[i*2-2][j*4+2] = '/';
-                            print[i*2-3][j*4+3] = '/';
+                            print[i*2][j*4+1+2+1] = '/';
+                            print[i*2-1][j*4+2+2+1] = '/';
+                            print[i*2-2][j*4+3+2+1] = '/';
 
                         }
                         else if(k==2){
-                            print[i*2-1][4*(j-1)] = '\\';
-                            
+                            print[i*2][4*(j-1)+2+1] = '\\';
                         }
                         else if(k==3){
-                            print[i*2-1][(j+1)*4] = '/';
+                            print[i*2][(j+1)*4+2+1] = '/';
                         }
                         else if(k==4){
-                            print[i*2+1][(j-1)*4] = '/';
+                            print[i*2+2][(j-1)*4+2+1] = '/';
                         }
                         else if(k==5){
-                            print[i*2+1][(j+1)*4] = '\\';
+                            print[i*2+2][(j+1)*4+2+1] = '\\';
                         }
                         else if(k==6){
-                            print[i*2+1][j*4-1] = '/';
-                            print[i*2+2][j*4-2] = '/';
-                            print[i*2+3][j*4-3] = '/';
+                            print[i*2+2][j*4-1+2+1] = '/';
+                            print[i*2+3][j*4-2+2+1] = '/';
+                            print[i*2+4][j*4-3+2+1] = '/';
                             
                         }
                         else if(k==7){
-                            print[i*2+1][j*4+1] = '\\';
-                            print[i*2+2][j*4+2] = '\\';
-                            print[i*2+3][j*4+3] = '\\';
+                            print[i*2+2][j*4+1+2+1] = '\\';
+                            print[i*2+3][j*4+2+2+1] = '\\';
+                            print[i*2+4][j*4+3+2+1] = '\\';
                         }
                     }
-                } else if(game->peg_board[i][j]==PLAYER_BLACK){
-                    print[i*2][j*4]= 'B';
+                }
+                else if(game->peg_board[i][j]==PLAYER_BLACK){
+                    print[i*2+1][j*4+2+1]= 'B';
                     if(game->Links[i][j][k]==PLAYER_BLACK){
-
                         if(k==0){
-                            print[i*2-1][j*(4-1)] = '\\';
+                            print[i*2][j*4-1+1+2] = '\\';
+                            print[i*2-1][j*4-2+2+1] = '\\';
+                            print[i*2-2][j*4-3+2+1] = '\\';
                         }
                         else if(k==1){
-                            print[i*2+1][j*(4-1)] = '/';
+                            print[i*2][j*4+1+2+1] = '/';
+                            print[i*2-1][j*4+2+2+1] = '/';
+                            print[i*2-2][j*4+3+2+1] = '/';
+
                         }
                         else if(k==2){
-                            print[i*2-1][j*4-1] = '\\';
-                            print[i*2-2][j*4-2] = '\\';
-                            print[i*2-3][j*4-3] = '\\';
+                            print[i*2+1][4*(j-1)+2+1] = '\\';
                         }
                         else if(k==3){
-                            print[i*2-3][j*4+1] = '/';
-                            print[i*2-2][j*4+2] = '/';
-                            print[i*2-3][j*4+3] = '/';
+                            print[i*2+1][(j+1)*4+2+1] = '/';
                         }
                         else if(k==4){
-                            print[i*2+1][j*4+1] = '\\';
-                            print[i*2+2][j*4+2] = '\\';
-                            print[i*2+3][j*4+3] = '\\';
+                            print[i*2+2][(j-1)*4+2+1] = '/';
                         }
                         else if(k==5){
-                            print[i*2+1][j*4-1] = '/';
-                            print[i*2+2][j*4-2] = '/';
-                            print[i*2+3][j*4-3] = '/';
+                            print[i*2+2][(j+1)*4+2+1] = '\\';
                         }
                         else if(k==6){
-                            print[i*2+1][j*(4+1)] = '\\';
+                            print[i*2+2][j*4-1+2+1] = '/';
+                            print[i*2+3][j*4-2+2+1] = '/';
+                            print[i*2+4][j*4-3+2+1] = '/';
+                            
                         }
                         else if(k==7){
-                            print[i*2-1][j*(4-1)] = '/';
+                            print[i*2+2][j*4+1+2+1] = '\\';
+                            print[i*2+3][j*4+2+2+1] = '\\';
+                            print[i*2+4][j*4+3+2+1] = '\\';
                         }
-                        
-                    
-                    
                     }
-                    
                 }
                 else{
-                    print[i*2][j*4]= '.';
+                    print[i*2+1][j*4+2+1]= '.';
                 }
             }
         }
     }
 }
 
+
 void show_board(Game* game){
     print_board(game);
-    for(int i=0;i<47;i++){
-        for(int j=0;j<93;j++){
+    for(int i=0;i<48;i++){
+        for(int j=0;j<96;j++){
             printf("%c",print[i][j]);
         }
         printf("\n");
@@ -136,7 +250,7 @@ int find_if_win(Game* game, enum Player player, int r, int c) {
     // Mark this peg as already visited
     visited[r][c] = 1;
     for (int k = 0; k < 8; k++) {
-        if (game->Links[r][c][k] == player) {
+        if (game->Links[r][c][k]==player) {
             int next_r = r + KNIGHT_MOVES_R[k];
             int next_c = c + KNIGHT_MOVES_C[k];
             if (!visited[next_r][next_c]) {
