@@ -83,6 +83,20 @@ int main() {
             else if(action == 'E'){
                 break;
             }
+            else if(action =='N'){
+                initialize_game(&my_game);
+                change_turn(&my_game);
+                break;
+            }
+            else if(action=='Q'){
+                if (my_game.current_turn == PLAYER_RED) {
+                    my_game.current_state = STATE_BLACK_WINS;
+                }
+                else{
+                    my_game.current_state = STATE_RED_WINS;
+                }
+                break;
+            }
             else {
                 printf("Invalid action\n");
             }

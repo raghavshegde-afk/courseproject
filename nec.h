@@ -22,7 +22,7 @@ typedef struct Game {
     enum GameState current_state;
 } Game;
 
-extern char print[50][100];//To print the board with links included as forward and backward slashes
+extern char print[48][96];//To print the board with links included as forward and backward slashes
 
 //8 possible knight's move row motion because twixt connections are essentially made in a knight's move pattern
 extern const int KNIGHT_MOVES_R[8];
