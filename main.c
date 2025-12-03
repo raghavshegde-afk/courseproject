@@ -9,7 +9,7 @@ const int KNIGHT_MOVES_R[8] = { -2, -2, -1, -1,  1,  1,  2,  2 };
 int visited[24][24];
 
 int main() {
-    struct Game my_game;
+    Game my_game;
     initialize_game(&my_game); // Set board to NONE, turn to RED, state to PLAYING
     memset(print, ' ', sizeof(print));
     while (my_game.current_state == STATE_PLAYING) {
@@ -48,41 +48,41 @@ int main() {
             printf("Enter action (R for Remove Peg, L for Place Link, S for Remove Link, E for End of Turn,Q to Quit,N for new game):");
             scanf(" %c", &action);
             if (action == 'R') {
-                int target_row, target_col;
+                int row1, col1;
         
                 printf("Enter coordinates (row col):");
-                scanf("%d %d", &target_row, &target_col);
-                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24) {
+                scanf("%d %d", &row1, &col1);
+                if(row1 < 0 || row1 >= 24 || col1 < 0 || col1 >= 24) {
                     printf("Invalid position\n");
                     continue;
                 }
-                remove_peg(&my_game, target_row, target_col);
+                remove_peg(&my_game, row1, col1);
             } else if (action == 'L') {
-                int target_row, target_col;
+                int row1, col1;
         
                 printf("Enter coordinates (row col):");
-                scanf("%d %d", &target_row, &target_col);
+                scanf("%d %d", &row1, &col1);
                 int row2, col2;
                 printf("Enter second coordinates for link placement (row col):");
                 scanf("%d %d", &row2, &col2);
-                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
+                if(row1 < 0 || row1 >= 24 || col1 < 0 || col1 >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
                     printf("Invalid position\n");
                     continue;
                 }
-                place_link(&my_game, target_row, target_col, row2, col2);
+                place_link(&my_game, row1, col1, row2, col2);
             } else if (action == 'S') {
-                int target_row, target_col;
+                int row1, col1;
         
                 printf("Enter coordinates (row col):");
-                scanf("%d %d", &target_row, &target_col);
+                scanf("%d %d", &row1, &col1);
                 int row2, col2;
                 printf("Enter second coordinates for link removal (row col):");
                 scanf("%d %d", &row2, &col2);
-                if(target_row < 0 || target_row >= 24 || target_col < 0 || target_col >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
+                if(row1 < 0 || row1 >= 24 || col1 < 0 || col1 >= 24 || row2 < 0 || row2 >= 24 || col2 < 0 || col2 >= 24) {
                     printf("Invalid position\n");
                     continue;
                 }
-                remove_link(&my_game, target_row, target_col, row2, col2);
+                remove_link(&my_game, row1, col1, row2, col2);
             } 
             else if(action == 'E'){
                 break;
