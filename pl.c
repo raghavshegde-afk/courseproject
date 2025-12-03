@@ -38,11 +38,11 @@ void remove_peg(Game* game, int row, int col) {
 }
 
 void place_link(Game* game, int row1, int col1, int row2, int col2) {
-    int dr = abs(row1 - row2);
+    int nr = abs(row1 - row2);
     int r=row1-row2;
     int c=col1-col2;
-    int dc = abs(col1 - col2);
-    if (!((dr == 2 && dc == 1) || (dr == 1 && dc == 2))) {
+    int nc = abs(col1 - col2);
+    if (!((nr == 2 && nc == 1) || (nr == 1 && nc == 2))) {
         printf("Links can only be placed in a knight's move pattern\n");
         return;
     }
@@ -93,9 +93,9 @@ void place_link(Game* game, int row1, int col1, int row2, int col2) {
 }
 
 void remove_link(Game* game, int row1, int col1, int row2, int col2) {
-    int dr = abs(row1 - row2);
-    int dc = abs(col1 - col2);
-    if (!((dr == 2 && dc == 1) || (dr == 1 && dc == 2))) {
+    int nr = abs(row1 - row2);
+    int nc = abs(col1 - col2);
+    if (!((nr == 2 && nc == 1) || (nr == 1 && nc == 2))) {
         printf("Links can only be removed in a knight's move pattern\n");
         return;
     }
