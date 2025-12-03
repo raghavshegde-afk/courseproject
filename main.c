@@ -3,7 +3,7 @@
 #include<string.h>
 #include "nec.h"
 
-char print[50][100];
+char print[48][96];
 const int KNIGHT_MOVES_C[8] = { -1,  1, -2,  2, -2,  2, -1,  1 };
 const int KNIGHT_MOVES_R[8] = { -2, -2, -1, -1,  1,  1,  2,  2 };
 int visited[24][24];
