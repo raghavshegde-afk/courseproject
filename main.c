@@ -3,7 +3,7 @@
 #include<string.h>
 #include "nec.h"
 
-char print[48][96];
+char print[50][98];
 const int KNIGHT_MOVES_C[8] = { -1,  1, -2,  2, -2,  2, -1,  1 };
 const int KNIGHT_MOVES_R[8] = { -2, -2, -1, -1,  1,  1,  2,  2 };
 int visited[24][24];
@@ -17,7 +17,11 @@ int main() {
         print_move_prompt(my_game.current_turn);
         printf("Input coords to place peg:");
         int row, col;
-        scanf("%d %d", &row, &col);
+        // scanf("%d %d", &row, &col);
+        if (scanf("%d %d", &row, &col) != 2) {
+        while (getchar() != '\n'); // Clear buffer manually if you don't use a helper func
+        continue;
+        }
         if(row < 0 || row >= 24 || col < 0 || col >= 24) {
             printf("Invalid position\n");
             continue;
@@ -41,7 +45,7 @@ int main() {
         place_peg(&my_game, row, col, my_game.current_turn);
         while(1) {
             char action;
-            printf("Enter action (R for Remove Peg, L for Place Link, S for Remove Link, E for end of turn):");
+            printf("Enter action (R for Remove Peg, L for Place Link, S for Remove Link, E for End of Turn,Q to Quit,N for new game):");
             scanf(" %c", &action);
             if (action == 'R') {
                 int target_row, target_col;

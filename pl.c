@@ -48,25 +48,25 @@ void place_link(Game* game, int row1, int col1, int row2, int col2) {
     }
     //Ensure that link doesn't intersect another one
     if(r==2&&c==1){
-        if(game->Links[row1-1][col1-1][3]!=PLAYER_NONE||game->Links[row1-1][col1-1][5]!=PLAYER_NONE||game->Links[row1-2][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1-1][col1][6]!=PLAYER_NONE||game->Links[row1-1][col1][4]!=PLAYER_NONE||game->Links[row1-1][col1][2]!=PLAYER_NONE||game->Links[row1-2][col1][6]!=PLAYER_NONE||game->Links[row1][col1][4]!=PLAYER_NONE){
+        if(game->Links[row1-1][col1-1][3]!=PLAYER_NONE||game->Links[row1-1][col1-1][5]!=PLAYER_NONE||game->Links[row1-2][col1][4]!=PLAYER_NONE||game->Links[row1][col1-1][3]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1-1][col1][6]!=PLAYER_NONE||game->Links[row1-1][col1][4]!=PLAYER_NONE||game->Links[row1-1][col1][2]!=PLAYER_NONE||game->Links[row1-2][col1][6]!=PLAYER_NONE||game->Links[row1-1][col1-1][1]!=PLAYER_NONE){
             printf("Link intersects another link\n");
             return;
         }
     }
     if(r==2&&c==-1){
-        if(game->Links[row1-1][col1+1][2]!=PLAYER_NONE||game->Links[row1-1][col1+1][4]!=PLAYER_NONE||game->Links[row1-2][col1+1][0]!=PLAYER_NONE||game->Links[row1][col1+1][0]!=PLAYER_NONE||game->Links[row1][col1+1][0]!=PLAYER_NONE||game->Links[row1-1][col1][7]!=PLAYER_NONE||game->Links[row1-1][col1][5]!=PLAYER_NONE||game->Links[row1-1][col1][3]!=PLAYER_NONE||game->Links[row1-2][col1][7]!=PLAYER_NONE||game->Links[row1][col1][5]!=PLAYER_NONE){
+        if(game->Links[row1-1][col1+1][2]!=PLAYER_NONE||game->Links[row1-1][col1+1][4]!=PLAYER_NONE||game->Links[row1-1][col1+1][0]!=PLAYER_NONE||game->Links[row1][col1+1][2]!=PLAYER_NONE||game->Links[row1][col1+1][0]!=PLAYER_NONE||game->Links[row1-1][col1][7]!=PLAYER_NONE||game->Links[row1-1][col1][5]!=PLAYER_NONE||game->Links[row1-1][col1][3]!=PLAYER_NONE||game->Links[row1-2][col1][5]!=PLAYER_NONE){
             printf("Link intersects another link\n");
             return;
         }
     }
     if(r==1&&c==2){
-        if(game->Links[row1-1][col1-1][5]!=PLAYER_NONE||game->Links[row1-1][col1-1][7]!=PLAYER_NONE||game->Links[row1-1][col1-2][0]!=PLAYER_NONE||game->Links[row1-1][col1][0]!=PLAYER_NONE||game->Links[row1-1][col1][0]!=PLAYER_NONE||game->Links[row1][col1-1][3]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][7]!=PLAYER_NONE||game->Links[row1][col1-2][3]!=PLAYER_NONE||game->Links[row1][col1][1]!=PLAYER_NONE){
+        if(game->Links[row1-1][col1-1][6]!=PLAYER_NONE||game->Links[row1-1][col1-1][7]!=PLAYER_NONE||game->Links[row1-1][col1-1][4]!=PLAYER_NONE||game->Links[row1-1][col1][4]!=PLAYER_NONE||game->Links[row1-1][col1][6]!=PLAYER_NONE||game->Links[row1][col1-1][3]!=PLAYER_NONE||game->Links[row1][col1-1][1]!=PLAYER_NONE||game->Links[row1][col1-1][0]!=PLAYER_NONE||game->Links[row1][col1-2][3]!=PLAYER_NONE||game->Links[row1][col1-2][1]!=PLAYER_NONE){
             printf("Link intersects another link\n");
             return;
         }
     }
     if(r==1&&c==-2){
-        if(game->Links[row1-1][col1+1][4]!=PLAYER_NONE||game->Links[row1-1][col1+1][6]!=PLAYER_NONE||game->Links[row1-1][col1+2][1]!=PLAYER_NONE||game->Links[row1-1][col1][1]!=PLAYER_NONE||game->Links[row1-1][col1][1]!=PLAYER_NONE||game->Links[row1][col1+1][2]!=PLAYER_NONE||game->Links[row1][col1+1][0]!=PLAYER_NONE||game->Links[row1][col1+1][6]!=PLAYER_NONE||game->Links[row1][col1+2][2]!=PLAYER_NONE||game->Links[row1][col1][0]!=PLAYER_NONE){
+        if(game->Links[row1-1][col1+1][5]!=PLAYER_NONE||game->Links[row1-1][col1+1][6]!=PLAYER_NONE||game->Links[row1-1][col1+1][7]!=PLAYER_NONE||game->Links[row1-1][col1][7]!=PLAYER_NONE||game->Links[row1-1][col1][5]!=PLAYER_NONE||game->Links[row1][col1+1][0]!=PLAYER_NONE||game->Links[row1][col1+1][1]!=PLAYER_NONE||game->Links[row1][col1+1][2]!=PLAYER_NONE||game->Links[row1][col1+2][0]!=PLAYER_NONE||game->Links[row1][col1+2][2]!=PLAYER_NONE){
             printf("Link intersects another link\n");
             return;
         }
